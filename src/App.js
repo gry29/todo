@@ -1,26 +1,31 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from "react";
+import "./App.css";
+import Navbar from "react-bootstrap/Navbar";
+import Nav from "react-bootstrap/Nav";
+import { Route, Switch, NavLink } from "react-router-dom";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends Component {
+  render() {
+    return (
+      <div>
+        <Navbar bg="dark" variant="dark" className="header">
+          <Navbar.Brand href="#home">TO-DO App</Navbar.Brand>
+          <Nav>
+            <NavLink className="header__link" to="/">
+              Актуальные задачи
+            </NavLink>
+            <NavLink className="header__link" to="/complete">
+              Выполненные задачи
+            </NavLink>
+          </Nav>
+        </Navbar>
+        <Switch>
+          <Route exact path="/" />
+          <Route path="/complete" />
+        </Switch>
+      </div>
+    );
+  }
 }
 
 export default App;
